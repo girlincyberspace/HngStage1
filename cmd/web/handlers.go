@@ -138,6 +138,7 @@ func classifyNumbers(w http.ResponseWriter, r *http.Request) {
 	number, err := getNumber(r)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
+		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"number": "alphabet",
 			"error":  true,
